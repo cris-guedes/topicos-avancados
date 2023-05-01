@@ -1,0 +1,30 @@
+{
+  "name": "topicos-avancados",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  },
+  "scripts": {
+    "dev": "yarn ts-node src/main.ts",
+    "debug": "node --inspect  --require ts-node/register src/main.ts",
+    "del":"del-cli dist .cache"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@types/cors": "^2.8.12",
+    "@types/crypto-js": "^4.1.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.13",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.1.1",
+    "D": "^1.0.0",
+    "del-cli": "^5.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}
