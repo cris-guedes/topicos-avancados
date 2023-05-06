@@ -1,18 +1,17 @@
-import {Express, Router} from "express";
-import { readdirSync } from "fs";
+import {Express} from "express";
+import address from "../routes/address";
+import part from "../routes/part";
+import carRegistration from "../routes/car-registration";
 
 export const setUpRoutes = (app:Express )=>{
-    const router = Router()
     
-     readdirSync(`${__dirname+'/../routes'}`).map(async fileName=>{
-        (await import (`../routes/${fileName}`)).default(router)
-        console.log(fileName.replace('.ts',''
-        ).replace('.js',''))
-        app.use(`/${fileName.replace('.ts','').replace('.js','')}`,router)
-       
-    })
     
-return app
     
+        app.use(`/address`,address)
+        app.use(`/part`,part)
+        app.use(`/car-registration`,carRegistration)
+    
+    
+        
 
 }

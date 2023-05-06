@@ -2,8 +2,8 @@ import { Router} from "express";
 
 import {} from "../../modules/car-registration/src"
 import { makeCreateCarRegistrations,makeReadCarRegistration,makeReadCarRegistrations,makeUpdateCarRegistrations } from "../../modules/car-registration/src";
+const route = Router()
 
-export default(route:Router )=>{
     route.get('/:id',async (request,response)=>{
         response.set('Accept', 'text');
         
@@ -16,7 +16,7 @@ export default(route:Router )=>{
 
     route.get('/',async (request,response)=>{
         response.set('Accept', 'text');
-        
+        console.log("car-registration-route")
         const controller = await makeReadCarRegistrations().handle()
         
         response.json(controller.data).status(controller.statusCode)
@@ -51,5 +51,5 @@ export default(route:Router )=>{
 
    
 
-}
+export default route
 

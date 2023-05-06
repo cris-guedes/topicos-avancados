@@ -2,7 +2,7 @@ import { Router} from "express";
 
 import {makeCreateParts,makeReadPart,makeReadParts,makeUpdateParts} from "../../modules/part/src"
 
-export default(route:Router )=>{
+const route = Router()
     route.get('/:id',async (request,response)=>{
         response.set('Accept', 'text');
         
@@ -17,6 +17,7 @@ export default(route:Router )=>{
 
     route.get('/',async (request,response)=>{
         response.set('Accept', 'text');
+        console.log("part-route")
         
         const controller = await makeReadParts().handle()
         
@@ -52,5 +53,5 @@ export default(route:Router )=>{
 
    
 
-}
+export default route
 

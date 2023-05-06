@@ -1,8 +1,8 @@
 import { Router} from "express";
 
 import {makeCreateAddress,makeReadAddress,makeReadAddresses,makeUpdateAddress} from "../../modules/address/src"
+const route = Router()
 
-export default(route:Router )=>{
     route.get('/:id',async (request,response)=>{
         response.set('Accept', 'text');
         
@@ -53,6 +53,6 @@ export default(route:Router )=>{
     
 
    
+export default route
 
-}
 
