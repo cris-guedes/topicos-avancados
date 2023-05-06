@@ -3,6 +3,6 @@ import { PartDTO } from "../Dtos/part";
 
 export interface ICreatePartRepository{
     
-    create(params:PartDTO): Promise<PartDTO> 
+    create(params:Omit<PartDTO,'id'>): Promise<PartDTO> 
 
 }

@@ -1,11 +1,12 @@
-import { ReadPartsService } from "../../data/services/read-parts-service"
-import { ReadPartsRepository } from "../../infra/repositories/read-parts-repository"
-import { ReadPartsController } from "../../presentation/controllers/read-parts-controller"
+import { ReadPartService } from "../../data/services/read-part-service"
+import { ReadPartRepository } from "../../infra/repositories/read-part-repository"
+import { ReadPartController } from "../../presentation/controllers/read-part-controller"
+
 
 
 export const makeReadPart = ()=>{
-    const readPartsRepository = new ReadPartsRepository()
-    const readPartsUseCase = new ReadPartsService(readPartsRepository)
-    const readPartsController = new ReadPartsController(readPartsUseCase)
+    const readPartsRepository = new ReadPartRepository()
+    const readPartsUseCase = new ReadPartService(readPartsRepository)
+    const readPartsController = new ReadPartController(readPartsUseCase)
     return readPartsController
 }

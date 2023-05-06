@@ -3,19 +3,19 @@ import { Router} from "express";
 import {makeCreateParts,makeReadPart,makeReadParts,makeUpdateParts} from "../../modules/part/src"
 
 export default(route:Router )=>{
-    route.get('/part/:id',async (request,response)=>{
+    route.get('/:id',async (request,response)=>{
         response.set('Accept', 'text');
         
         const {params} = request
         
        
 
-        //const controller = await makeReadPart().handle(params.id)
+        const controller = await makeReadPart().handle({params})
         
-        //response.json(controller.data).status(controller.statusCode)
+        response.json(controller.data).status(controller.statusCode)
     })
 
-    route.get('/parts',async (request,response)=>{
+    route.get('/',async (request,response)=>{
         response.set('Accept', 'text');
         
         const controller = await makeReadParts().handle()
@@ -23,7 +23,7 @@ export default(route:Router )=>{
         response.json(controller.data).status(controller.statusCode)
     })
 
-    route.post('/part',async (request,response)=>{
+    route.post('/',async (request,response)=>{
         response.set('Accept', 'application/json; charset=utf-8');
         
         const {body} = request
@@ -35,7 +35,7 @@ export default(route:Router )=>{
         response.json(controller.data).status(controller.statusCode)
     })
 
-    route.put('/part/:id',async (request,response)=>{
+    route.put('/:id',async (request,response)=>{
 
         response.set('Accept', 'application/json; charset=utf-8');
         

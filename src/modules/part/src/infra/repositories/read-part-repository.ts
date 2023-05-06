@@ -11,7 +11,7 @@ export class ReadPartRepository implements IReadPartRepository{
     async readById(params:Pick<PartDTO,'id'>): Promise<PartDTO> {
         console.log(params)
         
-        return  database.readById({id:params})
+        return  database.readById({id:params.id})
     }
     
 }

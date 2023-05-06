@@ -9,20 +9,20 @@ class Database {
 
     async create(params:Record): Promise<Record> {
         console.log(params)
-        return  await prisma.address.create({data:params})
+        return  await prisma.part.create({data:params})
 }
     
    async read(): Promise<Array<Record>> {
     console.log('read')
 
-           const address = await prisma.address.findMany()
-           if(address)return address
+           const part = await prisma.part.findMany()
+           if(part)return part
             throw new Error('sem endereços');
     }
 
     public async readById(params: Pick<Record,'id'>):Promise<Record>{
-    const address =await prisma.address.findUnique({ where:{id:params.id}})
-     if(address)return address
+    const part =await prisma.part.findUnique({ where:{id:params.id}})
+     if(part)return part
      throw new Error('sem endereços');
         
         
@@ -33,13 +33,13 @@ class Database {
         console.log(params)
         const {email,involvement,name,id}=params
         
-        return await prisma.address.update({data:{email,involvement,name},where:{id}})
+        return await prisma.part.update({data:{email,involvement,name},where:{id}})
     }
 
     public async delete(params:Pick<Record,'id'>){
         console.log(params)
         
-            await prisma.address.delete({where:{id:params.id}})
+            await prisma.part.delete({where:{id:params.id}})
         
         
     }

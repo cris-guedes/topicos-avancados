@@ -1,4 +1,9 @@
 import { Part } from "../../domain/entities/part";
 
 
-export type PartDTO = Part
+export type PartDTO = {
+    id: string;
+    name: string;
+    email: string;
+    involvement: string;
+}

@@ -7,3 +7,4 @@ export interface IReadPartRepository{
     readById(params:Pick<PartDTO,'id'>): Promise<PartDTO> 
 
 }
+

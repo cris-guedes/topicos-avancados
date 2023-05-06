@@ -10,7 +10,7 @@ export class ReadCarRegistrationRepository implements IReadCarRegistrationReposi
     async readById(params:Pick<CarRegistrationDTO,'id'>): Promise<CarRegistrationDTO> {
         console.log(params)
         
-        return  database.readById({id:params})
+        return  database.readById({id:params.id})
     }
     
 }
