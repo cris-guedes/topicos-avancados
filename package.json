@@ -8,8 +8,10 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
+    "start":"node dist/src/server.js",
     "dev": "yarn ts-node src/main.ts",
     "debug": "node --inspect  --require ts-node/register src/main.ts",
+    "build":"rimraf dist && tsc ",
     "del": "del-cli dist .cache"
   },
   "prisma": {

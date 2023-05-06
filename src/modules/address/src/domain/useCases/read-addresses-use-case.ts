@@ -1,4 +1,4 @@
-import { Address } from "../entities/adress"
+import { Address } from "../entities/address"
 
 
 

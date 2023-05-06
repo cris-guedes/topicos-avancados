@@ -1,4 +1,4 @@
-import { Address } from "../../domain/entities/adress";
+import { Address } from "../../domain/entities/address";
 
 
 export type AddressDTO = {

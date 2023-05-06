@@ -3,6 +3,6 @@ import { AddressDTO} from "../Dtos/address"
 
 export interface ICreateAddressRepository{
     
-    create(params:AddressDTO): Promise<AddressDTO> 
+    create(params:Omit<AddressDTO,'id'>): Promise<AddressDTO> 
 
 }
