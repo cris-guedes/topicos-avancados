@@ -7,8 +7,8 @@ export const setUpRoutes = (app:Express )=>{
      readdirSync(`${__dirname+'/../routes'}`).map(async fileName=>{
         (await import (`../routes/${fileName}`)).default(router)
         console.log(fileName.replace('.ts',''
-        ))
-        app.use(`/${fileName.replace('.ts','')}`,router)
+        ).replace('.js',''))
+        app.use(`/${fileName.replace('.ts','').replace('.js','')}`,router)
        
     })
     
