@@ -7,6 +7,7 @@ type AddressData ={
         publicPlace: string
         neighborhood: string
         number: string
+        report: string|null
 }
 
 export type Address = Entity<AddressData,AddressIdentify>

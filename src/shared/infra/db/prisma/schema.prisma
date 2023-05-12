@@ -10,29 +10,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-model address{
-id  String @unique
-state String
-city String
-publicPlace String
-neighborhood String
-number String
+model address {
+  id           String  @unique
+  state        String
+  city         String
+  publicPlace  String
+  neighborhood String
+  number       String
+  report       String?
 }
 
-model carRegistration{
-id  String @unique
-plate String 
-state String
-city String
-
+model carRegistration {
+  id      String  @unique
+  plate   String
+  state   String
+  city    String
+  vehicle String?
 }
 
-model part{
-  id  String @unique
-  name String
-  email String
+model part {
+  id          String @unique
+  name        String
+  email       String
   involvement String
-
 }

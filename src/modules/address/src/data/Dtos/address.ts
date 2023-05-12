@@ -8,4 +8,5 @@ export type AddressDTO = {
     publicPlace: string;
     neighborhood: string;
     number: string;
+    report: string | null;
 }

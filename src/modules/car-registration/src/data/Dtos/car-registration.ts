@@ -6,4 +6,5 @@ export type CarRegistrationDTO ={
     plate: string;
     state: string;
     city: string;
+    vehicle:string|null;
 }
