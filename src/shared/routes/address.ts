@@ -1,7 +1,8 @@
-import { Router} from "express";
+import { Request, Router} from "express";
 
 import {makeCreateAddress,makeReadAddress,makeReadAddresses,makeUpdateAddress} from "../../modules/address/src"
-const route = Router()
+
+const route = Router();
 
     route.get('/:id',async (request,response)=>{
         response.set('Accept', 'text');
@@ -23,16 +24,24 @@ const route = Router()
         response.json(controller.data).status(controller.statusCode)
     })
 
-    route.post('/',async (request,response)=>{
-        response.set('Accept', 'application/json; charset=utf-8');
+    route.post('/',async (request:Request,response)=>{
+        //response.set('Accept', 'application/json; charset=utf-8');
         
         const {body} = request
-        console.log(body)
+        console.log(request)
+        console.log(request.body)
+        console.log(request.params)
+        console.log(request.query)
+    
+        try{
         
         const controller = await makeCreateAddress().handle({params:body})
      
         
         response.json(controller.data).status(controller.statusCode)
+        }catch(e){
+            console.log(e)
+        }
     })
 
     route.put('/:id',async (request,response)=>{

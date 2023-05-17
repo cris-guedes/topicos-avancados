@@ -1,15 +1,22 @@
-import Express from "express";
+import express from "express";
 import dotenv from "dotenv";
 import { setUpRoutes } from "./shared/config/set-up-routes";
+import cors from "cors";
 dotenv.config()
+try{
 
-
-const server = Express();
+const server = express();
 setUpRoutes(server)
+server.use(cors({ origin: '*' }))
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use(express.raw({type:"*"}))
 
-server.use(Express.urlencoded({ extended: true }));
-server.use(Express.json());
+
 console.log(process.env.PORT)
 console.log(process.env.SERVER_PORT)
 
-server.listen(process.env.PORT||process.env.SERVER_PORT,()=>console.log("server rodando"))
+server.listen(3000,()=>console.log("server rodando"))
+}catch(e){
+    console.log(e)
+}

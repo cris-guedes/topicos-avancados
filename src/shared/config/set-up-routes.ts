@@ -7,9 +7,9 @@ export const setUpRoutes = (app:Express )=>{
     
     
     
-        app.use(`/address`,address)
-        app.use(`/part`,part)
-        app.use(`/car-registration`,carRegistration)
+        app.use("/address",address)
+        app.use("/part",part)
+        app.use("/car-registration",carRegistration)
     
     
         

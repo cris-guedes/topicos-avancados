@@ -8,35 +8,32 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
-    "start":"node dist/src/main.js",
+    "start": "node dist/src/main.js",
     "dev": "yarn ts-node src/main.ts",
     "debug": "node --inspect  --require ts-node/register src/main.ts",
-    "build":"rimraf dist && tsc ",
-    "del": "del-cli dist .cache"
+    "build": "rimraf dist && tsc "
+  
   },
   "prisma": {
     "schema": "src/shared/infra/db/prisma/schema.prisma"
   },
   "dependencies": {
-    "-": "^0.0.1",
+   
     "@prisma/client": "^4.13.0",
     "@types/cors": "^2.8.12",
     "@types/crypto-js": "^4.1.1",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "^18.7.13",
-    "D": "^1.0.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "crypto-js": "^4.1.1",
-    "del-cli": "^5.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "prisma": "^4.13.0"
-  }, 
+  },
   "engines": {
-    "node": "^14",
+    "node": "^16",
     "yarn": "1"
-
-}
+  }
 }
