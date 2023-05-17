@@ -1,5 +1,4 @@
-import { prisma } from '../prisma'
-import data from './../csvjson.json'
+/*import { prisma } from '../prisma'
 
 export type Registers = Register[]
 
@@ -68,11 +67,12 @@ register.map((data:Register)=>{
   const{ANO_BO,ANO_FABRICACAO,ANO_MODELO,BAIRRO,BO_AUTORIA,BO_EMITIDO,BO_INICIADO,CIDADE,CIDADE_VEICULO,CORCUTIS,DATACOMUNICACAO,DATAELABORACAO,DATANASCIMENTO,DATAOCORRENCIA,DELEGACIA_CIRCUNSCRICAO,DELEGACIA_NOME,DESCRICAOLOCAL,DESCR_COR_VEICULO,DESCR_MARCA_VEICULO,DESCR_TIPO_VEICULO,DESDOBRAMENTO,ESPECIE,ESTADOCIVIL,EXAME,FLAGRANTE,GRAUINSTRUCAO,HORAOCORRENCIA,IDADE,LATITUDE,LOGRADOURO,LONGITUDE,MARCA_CELULAR,NACIONALIDADE,NATURALIDADE,NATUREZAVINCULADA,NUMERO,NUMERO_BOLETIM,NUMERO_BOLETIM_PRINCIPAL,NUM_BO,PARENTESCO,PERIDOOCORRENCIA,PLACA_VEICULO,PROFISSAO,QUANT_CELULAR,RELACIONAMENTO,RUBRICA,SEXO,SOLUCAO,STATUS,TIPOPESSOA,TIPOVINCULO,UF,UF_VEICULO,VITIMAFATAL}= data
 
 
-const adress = prisma.address.create({data:{id:count.toString(),city:CIDADE,neighborhood:BAIRRO,number:NUMERO.toString(),report:`${reportApiAdress}/report/${NUM_BO}`,publicPlace:LOGRADOURO,state:UF}})
-const carRegistration = prisma.carRegistration.create({data:{id:count.toString(), city:CIDADE_VEICULO,plate:PLACA_VEICULO,state:UF_VEICULO,vehicle:`${reportApiAdress}/vehicle/${PLACA_VEICULO}`}})
+const adress = prisma.address.create({data:{id:count.toString(),city:CIDADE,neighborhood:BAIRRO,number:NUMERO.toString(),report:`${reportApiAdress}/boletim/${NUM_BO}`,publicPlace:LOGRADOURO,state:UF}})
+const carRegistration = prisma.carRegistration.create({data:{id:count.toString(), city:CIDADE_VEICULO,plate:PLACA_VEICULO,state:UF_VEICULO,vehicle:`${reportApiAdress}/veiculo/${PLACA_VEICULO}`}})
 
 count = count +1
 
 
 
 })
+*/
