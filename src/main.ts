@@ -11,6 +11,7 @@ setUpRoutes(server)
 
 server.post('/ping',(req,res)=>console.log(req.body))
 
+const host = '0.0.0.0';
+const port:any = process.env.PORT || 3000;
 
-
-server.listen({port:process.env.PORT as unknown as number ||3000})
+server.listen({port,host})
