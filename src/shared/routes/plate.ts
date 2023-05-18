@@ -1,24 +1,25 @@
 import {FastifyInstance} from "fastify"
 
-import { makeCreateCarRegistrations,makeReadCarRegistration,makeReadCarRegistrations,makeUpdateCarRegistrations } from "../../modules/car-registration/src";
+import {makeCreateParts,makeReadPart,makeReadParts,makeUpdateParts} from "../../modules/part/src"
 
-async function carRegistrationRoutes(route:FastifyInstance){
-
+async function partRoutes(route:FastifyInstance){
     route.get('/:id',async (request,response)=>{
         //response.set('Accept', 'text');
         
         const {params}:any = request
         
-        const controller = await makeReadCarRegistration().handle({params})
+       
+
+        const controller = await makeReadPart().handle({params})
         
         response.send(controller.data).status(controller.statusCode)
     })
 
     route.get('/',async (request,response)=>{
         //response.set('Accept', 'text');
-        console.log("car-registration-route")
+        console.log("part-route")
         
-        const controller = await makeReadCarRegistrations().handle()
+        const controller = await makeReadParts().handle()
         
         response.send(controller.data).status(controller.statusCode)
     })
@@ -29,7 +30,7 @@ async function carRegistrationRoutes(route:FastifyInstance){
         const {body} = request
         console.log(body)
         
-        const controller = await makeCreateCarRegistrations().handle({params:body})
+        const controller = await makeCreateParts().handle({params:body})
      
         
         response.send(controller.data).status(controller.statusCode)
@@ -43,14 +44,13 @@ async function carRegistrationRoutes(route:FastifyInstance){
         const {params}:any = request
 
         
-        const controller = await makeUpdateCarRegistrations().handle({params:body},params.id)
+        const controller = await makeUpdateParts().handle({params:body},params.id)
      
         
         response.send(controller.data).status(controller.statusCode)
 
     })
-
 }
+   
 
-export default carRegistrationRoutes
-
+export default partRoutes

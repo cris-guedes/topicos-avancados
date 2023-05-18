@@ -1,17 +1,18 @@
-import {Express} from "express";
-import address from "../routes/address";
-import part from "../routes/part";
-import carRegistration from "../routes/car-registration";
+import {FastifyInstance}from "fastify"
+import addressRoute from "../routes/address";
+import carRegistrationRoutes from "../routes/car-registration";
+import partRoutes from "../routes/part";
 
-export const setUpRoutes = (app:Express )=>{
+export const setUpRoutes = (app:FastifyInstance )=>{
     
-    
-    
-        app.use("/address",address)
-        app.use("/part",part)
-        app.use("/car-registration",carRegistration)
-    
-    
-        
-
+        app.register(addressRoute, {
+                prefix: 'address',
+              })
+        app.register(carRegistrationRoutes, {
+                prefix: 'car-registration',
+              })
+              app.register(partRoutes, {
+                prefix: 'part',
+              })
+       
 }

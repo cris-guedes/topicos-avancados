@@ -1,31 +1,32 @@
-import { Request, Router} from "express";
+import {FastifyInstance}from "fastify"
 
 import {makeCreateAddress,makeReadAddress,makeReadAddresses,makeUpdateAddress} from "../../modules/address/src"
 
-const route = Router();
+async function addressRoute(route:FastifyInstance){
 
     route.get('/:id',async (request,response)=>{
-        response.set('Accept', 'text');
+        //response.set('Accept', 'text');
         
-        const {params} = request
+        const params:any = request.params
+        console.log(request.params)
         
        
 
-        const controller = await makeReadAddress().handle({params})
+        const controller = await makeReadAddress().handle({params:params})
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
     })
 
     route.get('/',async (request,response)=>{
-        response.set('Accept', 'text');
+        //response.set('Accept', 'text');
         
         const controller = await makeReadAddresses().handle()
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
     })
 
-    route.post('/',async (request:Request,response)=>{
-        //response.set('Accept', 'application/json; charset=utf-8');
+    route.post('/',async (request,response)=>{
+        //response.set('Accept', 'application/send; charset=utf-8');
         
         const {body} = request
         console.log(request)
@@ -38,7 +39,7 @@ const route = Router();
         const controller = await makeCreateAddress().handle({params:body})
      
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
         }catch(e){
             console.log(e)
         }
@@ -46,22 +47,22 @@ const route = Router();
 
     route.put('/:id',async (request,response)=>{
 
-        response.set('Accept', 'application/json; charset=utf-8');
+       // response.set('Accept', 'application/send; charset=utf-8');
         
-        const {body} = request
-        const {params} = request
+        const {body}:any = request
+        const {params}:any = request
 
         
         const controller = await makeUpdateAddress().handle({params:body},params.id)
      
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
 
     })
 
     
-
+}
    
-export default route
+export default addressRoute
 
 

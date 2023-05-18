@@ -2,21 +2,18 @@ import express from "express";
 import dotenv from "dotenv";
 import { setUpRoutes } from "./shared/config/set-up-routes";
 import cors from "cors";
+import Fastify from "fastify"
 dotenv.config()
-try{
 
-const server = express();
+
+const server = Fastify({logger:true});
+
 setUpRoutes(server)
-server.use(cors({ origin: '*' }))
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
-server.use(express.raw({type:"*"}))
+
+server.post('/ping',(req,res)=>console.log(req.body))
 
 
 console.log(process.env.PORT)
 console.log(process.env.SERVER_PORT)
 
-server.listen(3000,()=>console.log("server rodando"))
-}catch(e){
-    console.log(e)
-}
+server.listen({port:3000})

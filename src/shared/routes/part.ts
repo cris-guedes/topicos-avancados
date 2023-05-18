@@ -1,31 +1,31 @@
-import { Router} from "express";
+import {FastifyInstance} from "fastify"
 
 import {makeCreateParts,makeReadPart,makeReadParts,makeUpdateParts} from "../../modules/part/src"
 
-const route = Router()
+async function partRoutes(route:FastifyInstance){
     route.get('/:id',async (request,response)=>{
-        response.set('Accept', 'text');
+        //response.set('Accept', 'text');
         
-        const {params} = request
+        const {params}:any = request
         
        
 
         const controller = await makeReadPart().handle({params})
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
     })
 
     route.get('/',async (request,response)=>{
-        response.set('Accept', 'text');
+        //response.set('Accept', 'text');
         console.log("part-route")
         
         const controller = await makeReadParts().handle()
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
     })
 
     route.post('/',async (request,response)=>{
-        response.set('Accept', 'application/json; charset=utf-8');
+        //response.set('Accept', 'application.send; charset=utf-8');
         
         const {body} = request
         console.log(body)
@@ -33,25 +33,24 @@ const route = Router()
         const controller = await makeCreateParts().handle({params:body})
      
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
     })
 
     route.put('/:id',async (request,response)=>{
 
-        response.set('Accept', 'application/json; charset=utf-8');
+        //response.set('Accept', 'application.send; charset=utf-8');
         
-        const {body} = request
-        const {params} = request
+        const {body}:any = request
+        const {params}:any = request
 
         
         const controller = await makeUpdateParts().handle({params:body},params.id)
      
         
-        response.json(controller.data).status(controller.statusCode)
+        response.send(controller.data).status(controller.statusCode)
 
     })
-
+}
    
 
-export default route
-
+export default partRoutes
