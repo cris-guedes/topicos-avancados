@@ -13,7 +13,7 @@ setUpRoutes(server)
 server.post('/ping',(req,res)=>console.log(req.body))
 
 
-console.log(process.env.PORT)
-console.log(process.env.SERVER_PORT)
+const localPort = process.env.PORT as unknown as number
+const remotePort = process.env.SERVER_PORT as unknown as number
 
-server.listen({port:3000})
+server.listen({port:localPort|remotePort|3000})
