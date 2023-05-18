@@ -17,7 +17,6 @@ async function carRegistrationRoutes(route:FastifyInstance){
     route.get('/',async (request,response)=>{
         //response.set('Accept', 'text');
         console.log("car-registration-route")
-        
         const controller = await makeReadCarRegistrations().handle()
         
         response.send(controller.data).status(controller.statusCode)
