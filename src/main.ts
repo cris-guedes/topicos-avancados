@@ -1,7 +1,6 @@
-import express from "express";
+
 import dotenv from "dotenv";
 import { setUpRoutes } from "./shared/config/set-up-routes";
-import cors from "cors";
 import Fastify from "fastify"
 dotenv.config()
 
@@ -13,7 +12,5 @@ setUpRoutes(server)
 server.post('/ping',(req,res)=>console.log(req.body))
 
 
-const localPort = process.env.PORT as unknown as number
-const remotePort = process.env.SERVER_PORT as unknown as number
 
-server.listen({port:localPort|remotePort|3000})
+server.listen({port:process.env.PORT as unknown as number ||3000})
