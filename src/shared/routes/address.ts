@@ -1,6 +1,6 @@
 import {FastifyInstance}from "fastify"
 
-import {makeCreateAddress,makeReadAddress,makeReadAddresses,makeUpdateAddress} from "../../modules/address/src"
+import {makeCreateAddress,makeReadAddress,makeReadAddresses,makeReadCityAddresses,makeUpdateAddress} from "../../modules/address/src"
 
 async function addressRoute(route:FastifyInstance){
 
@@ -19,8 +19,10 @@ async function addressRoute(route:FastifyInstance){
 
     route.get('/',async (request,response)=>{
         //response.set('Accept', 'text');
-        
-        const controller = await makeReadAddresses().handle()
+        const params:any = request.query
+        const city =params.city
+        console.log(request)
+        const controller = city? await makeReadCityAddresses().handle({params:params}):await makeReadAddresses().handle()
         
         response.send(controller.data).status(controller.statusCode)
     })

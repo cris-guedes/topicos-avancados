@@ -3,11 +3,11 @@ import { IReadCarRegistrationByPlateUseCase } from "../../domain/useCases/read-c
 import { IUseCase, UseCaseParams, UseCaseReturn } from "../../main/shared/IBaseUseCase"
 import { CarRegistrationDTO } from "../Dtos/car-registration"
 import { IReadCarRegistrationByPlateRepository } from "../contracts/iread-car-registration-by-plate-repository "
-import { IReadCarRegistrationRepository } from "../contracts/iread-car-registration-repository"
 
 
 
-export class ReadCarRegistrationService implements IUseCase<IReadCarRegistrationByPlateUseCase>{
+
+export class ReadCarRegistrationByPlateService implements IUseCase<IReadCarRegistrationByPlateUseCase>{
 
     constructor(private readonly readCarregistrationRepository:IReadCarRegistrationByPlateRepository){}
     execute(useCaseParams: UseCaseParams<Pick<CarRegistrationDTO,'plate'>>):Promise<UseCaseReturn<CarRegistrationDTO>> {

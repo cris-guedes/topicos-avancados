@@ -10,6 +10,14 @@ class Database {
         console.log(params)
         return  await prisma.address.create({data:params})
 }
+public async readByCity(params: Pick<Address,'city'>):Promise<Address[]>{
+    const address =await prisma.address.findMany({ where:{city:params.city}})
+     if(address)return address
+     throw new Error('sem endereços');
+        
+        
+       
+    }
     
    async read(): Promise<Array<Address>> {
     console.log('read')
@@ -30,9 +38,9 @@ class Database {
 
     public async update(params:Partial<Address>){
         console.log(params)
-        const {city,id,neighborhood,number,publicPlace,state}=params
+        const {city,id,neighborhood,number,publicPlace,state,report}=params
         
-        return await prisma.address.update({data:{city,neighborhood,number,publicPlace,state},where:{id}})
+        return await prisma.address.update({data:{city,neighborhood,number,publicPlace,state,report},where:{id}})
     }
 
     public async delete(params:Pick<Address,'id'>){

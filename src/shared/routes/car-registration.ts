@@ -1,6 +1,6 @@
 import {FastifyInstance} from "fastify"
 
-import { makeCreateCarRegistrations,makeReadCarRegistration,makeReadCarRegistrations,makeUpdateCarRegistrations } from "../../modules/car-registration/src";
+import { makeCreateCarRegistrations,makeReadCarRegistration,makeReadCarRegistrationByPlate,makeReadCarRegistrations,makeUpdateCarRegistrations } from "../../modules/car-registration/src";
 
 async function carRegistrationRoutes(route:FastifyInstance){
 
@@ -17,7 +17,9 @@ async function carRegistrationRoutes(route:FastifyInstance){
     route.get('/',async (request,response)=>{
         //response.set('Accept', 'text');
         console.log("car-registration-route")
-        const controller = await makeReadCarRegistrations().handle()
+        const params:any = request.query
+        const plate = params.plate
+        const controller = plate? await makeReadCarRegistrationByPlate().handle({params:plate}): await makeReadCarRegistrations().handle()
         
         response.send(controller.data).status(controller.statusCode)
     })

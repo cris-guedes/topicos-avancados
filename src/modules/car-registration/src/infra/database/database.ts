@@ -1,3 +1,4 @@
+import { throws } from "assert"
 import { prisma } from "../../../../../shared/infra/db/prisma"
 import { CarRegistrationDTO } from "../../data/Dtos/car-registration"
 
@@ -8,6 +9,14 @@ import { Entity } from "../../main/shared/IBaseEntity"
 type Record=Entity<CarRegistrationDTO,string>
 
 class Database {
+    async readByPlate(params: Pick<Record,"plate">): Promise<Record> {
+        const{plate} =params
+        
+       const car = await  prisma.carRegistration.findFirst({where:{plate}})
+       if(!car) throw new Error("no car")
+       return car
+
+    }
 
     async create(params:Record): Promise<Record> {
         console.log(params)
