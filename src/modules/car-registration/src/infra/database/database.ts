@@ -43,9 +43,9 @@ class Database {
 
     public async update(params:Partial<Record>){
         console.log(params)
-        const {city,id,plate,state}=params
+        const {city,id,plate,state,vehicle}=params
         
-        return await prisma.carRegistration.update({data:{city,plate,state},where:{id}})
+        return await prisma.carRegistration.update({data:{city,plate,state,vehicle},where:{id}})
     }
 
     public async delete(params:Pick<Record,'id'>){
