@@ -11,8 +11,10 @@ type Record=Entity<CarRegistrationDTO,string>
 class Database {
     async readByPlate(params: Pick<Record,"plate">): Promise<Record> {
         const{plate} =params
+        console.log(params)
         
        const car = await  prisma.carRegistration.findFirst({where:{plate}})
+       console.log(car)
        if(!car) throw new Error("no car")
        return car
 
